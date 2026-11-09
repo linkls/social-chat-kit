@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>微信聊天急救包 · 6 个场景 27 句现成回复</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{background:#F1EAE1}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Source Han Sans SC",sans-serif;
+  color:#33403D;font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.app{max-width:430px;min-height:100vh;margin:0 auto;background:#FAF7F2;position:relative;overflow:hidden}
+.pad{padding:0 20px 50px}
+
+/* ---------- 通用 ---------- */
+.eyebrow{font-size:12px;letter-spacing:.18em;color:#9AA8A4;font-weight:600}
+.h1{font-size:29px;line-height:1.28;font-weight:800;letter-spacing:-.01em}
+.h2{font-size:18px;font-weight:800;margin:0 0 12px;display:flex;align-items:center;gap:8px}
+.h2::before{content:"";width:4px;height:16px;border-radius:3px;background:var(--teal)}
+.h3{font-size:15px;font-weight:800;margin:0 0 8px}
+.sub{color:#63736F;font-size:14px}
+.card{background:#fff;border-radius:22px;padding:20px 18px;box-shadow:0 6px 22px rgba(74,90,84,.07)}
+.tag{display:inline-block;padding:4px 11px;border-radius:999px;font-size:12px;font-weight:700;background:#EAF3F0;color:#4E8C84}
+.tag.a{background:#FBEADC;color:#B46B3C}.tag.b{background:#E4F0ED;color:#4E8C84}
+.tag.c{background:#ECE9F7;color:#6E65A8}.tag.d{background:#E3ECF5;color:#4B7196}
+.rule{height:1px;background:#EFE8DF;margin:16px 0}
+.muted{color:#8C9A96;font-size:12.5px;line-height:1.75}
+.lead{color:#63736F;font-size:14.5px}
+
+/* ---------- 首页 ---------- */
+.hero{position:relative;padding:42px 0 6px;text-align:center}
+.blob{position:absolute;top:-10px;left:50%;transform:translateX(-50%);width:200px;height:200px;
+  background:radial-gradient(circle at 35% 30%,#FBE3CE,#F6D5C2 45%,#DCEBE6 100%);
+  filter:blur(7px);opacity:.7;z-index:0;pointer-events:none}
+.hero>*{position:relative;z-index:1}
+.hero .h1{margin:12px 0 8px}
+.hero .lead{color:#63736F;font-size:14.5px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:18px 0 2px}
+.chip{background:#fff;border:1px solid #EEE5DA;border-radius:999px;padding:6px 13px;font-size:12.5px;color:#5C6B67;font-weight:600}
+.tipbar{display:flex;gap:9px;align-items:flex-start;background:#EAF4F1;border-radius:16px;padding:13px 14px;margin:20px 0 0}
+.tipbar .ic{flex:0 0 26px;width:26px;height:26px;border-radius:9px;background:#71B0A4;color:#fff;font-size:14px;font-weight:800;
+  display:flex;align-items:center;justify-content:center}
+.tipbar .tx{flex:1;font-size:13px;color:#4B5C58;line-height:1.7}
+
+/* ---------- 速查表 ---------- */
+.quick{background:#fff;border-radius:22px;padding:16px 12px 12px;box-shadow:0 6px 22px rgba(74,90,84,.07);margin-top:16px}
+.qt{width:100%;border-collapse:collapse;table-layout:fixed}
+.qt th,.qt td{border-bottom:1px dashed #EFE8DF;padding:9px 6px;vertical-align:top;text-align:left;font-size:11.5px;line-height:1.55}
+.qt th{font-size:11.5px;color:#8C9A96;font-weight:800;letter-spacing:.02em;padding-bottom:8px}
+.qt td:first-child,.qt th:first-child{width:64px;padding-left:4px}
+.qt tr:last-child td{border-bottom:0}
+.qt .sc{font-weight:800;color:#33403D;font-size:12px}
+.qt .g{color:#54635F}
+.qt .v1{color:#3F6F68;font-weight:700}
+.qt .v2{color:#8A6238;font-weight:700}
+.qt .v3{color:#5E5790;font-weight:700}
+.qtcap{display:flex;align-items:center;justify-content:space-between;margin:0 4px 6px}
+.qtcap .t{font-size:15px;font-weight:800}
+.qtcap .b{font-size:11px;color:#A5AFA9}
+
+/* ---------- 场景 ---------- */
+.sc-head{display:flex;align-items:flex-start;gap:12px;margin:30px 0 12px}
+.sc-no{flex:0 0 38px;width:38px;height:38px;border-radius:13px;background:linear-gradient(135deg,#71B0A4,#4E8C84);color:#fff;
+  font-size:16px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.sc-head .tt{flex:1}
+.sc-head .tt .n{font-size:19px;font-weight:800;line-height:1.35}
+.sc-head .tt .d{font-size:13px;color:#8C9A96;margin-top:3px}
+.ver{background:#fff;border-radius:20px;padding:17px 16px;box-shadow:0 6px 22px rgba(74,90,84,.07);margin-bottom:12px}
+.vhead{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}
+.vhead .nm{font-size:15.5px;font-weight:800;display:flex;align-items:center;gap:8px}
+.vhead .dot{width:9px;height:9px;border-radius:50%}
+.copyall{border:1px solid #E9E1D6;background:#fff;border-radius:999px;padding:5px 12px;font-size:11.5px;color:#8C9A96;font-weight:700;cursor:pointer;font-family:inherit}
+.copyall:active{background:#F5F1EA}
+.line{display:flex;gap:10px;align-items:flex-start;padding:11px 12px;background:#FAF7F2;border:1px solid #EFE7DC;border-radius:14px;
+  margin-bottom:9px;cursor:pointer;transition:all .15s ease}
+.line:active{transform:scale(.99);border-color:#71B0A4;background:#EAF4F1}
+.line .tx{flex:1;font-size:14.5px;line-height:1.66;color:#3E4B48}
+.line .cp{flex:0 0 20px;width:20px;height:20px;border-radius:7px;background:#EAF3F0;color:#4E8C84;font-size:11px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;margin-top:3px}
+.meta{margin-top:12px;border-radius:14px;padding:12px 13px;background:#F7F3EC}
+.meta .r{display:flex;gap:10px;align-items:flex-start;padding:5px 0;font-size:13px;line-height:1.7;color:#54635F}
+.meta .r .k{flex:0 0 74px;font-size:11.5px;font-weight:800;color:#9AA8A4;letter-spacing:.02em;padding-top:2px}
+.meta .r .v{flex:1}
+.meta .r .v em{font-style:normal;color:#33403D;font-weight:700}
+
+/* ---------- 自测 ---------- */
+.qwrap{background:#fff;border-radius:24px;padding:22px 18px;box-shadow:0 8px 26px rgba(74,90,84,.08)}
+.qbar{height:7px;border-radius:99px;background:#EBE3D9;overflow:hidden;margin-bottom:16px}
+.qbar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#8FC7BC,#E9A178);transition:width .3s ease}
+.qcnt{font-size:12.5px;color:#8C9A96;font-weight:700;margin-bottom:9px}
+.qcnt b{color:#4E8C84;font-size:15px}
+.qtext{font-size:18px;font-weight:700;line-height:1.55;margin-bottom:16px}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{display:flex;gap:11px;align-items:flex-start;text-align:left;width:100%;background:#FAF7F2;border:1.5px solid #EFE7DC;
+  border-radius:16px;padding:13px 14px;font-size:14.5px;line-height:1.6;color:#3E4B48;cursor:pointer;font-family:inherit;transition:all .15s ease}
+.opt:active{transform:scale(.99)}
+.opt .k{flex:0 0 23px;width:23px;height:23px;border-radius:8px;background:#EDE5DA;color:#8C9A96;font-size:12.5px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;margin-top:2px}
+.opt.sel{border-color:#71B0A4;background:#EAF4F1}
+.opt.sel .k{background:#71B0A4;color:#fff}
+.backbtn{border:0;background:transparent;color:#8C9A96;font-size:13.5px;font-weight:600;cursor:pointer;font-family:inherit;padding:2px 0;margin-top:14px}
+.res-hero{border-radius:22px;padding:24px 20px;position:relative;overflow:hidden}
+.res-hero .kicker{font-size:12px;letter-spacing:.16em;font-weight:700;opacity:.78}
+.res-hero .tname{font-size:27px;font-weight:900;margin:8px 0 4px}
+.res-hero .oneline{font-size:14.5px;line-height:1.75;margin-top:12px}
+.res-list{margin-top:16px;display:flex;flex-direction:column;gap:10px}
+.res-item{background:#fff;border-radius:16px;padding:13px 14px;display:flex;gap:11px;align-items:flex-start;box-shadow:0 4px 16px rgba(74,90,84,.06)}
+.res-item .ic{flex:0 0 26px;width:26px;height:26px;border-radius:9px;color:#fff;font-size:13px;font-weight:800;
+  display:flex;align-items:center;justify-content:center}
+.res-item .tx{flex:1;font-size:14px;line-height:1.72;color:#4B5C58}
+.res-item .tx b{display:block;color:#33403D;font-size:14.5px;margin-bottom:3px}
+.rbtn{display:block;width:100%;padding:15px;border:0;border-radius:17px;font-size:16px;font-weight:800;cursor:pointer;font-family:inherit;margin-top:11px}
+.rbtn.p{background:linear-gradient(135deg,#71B0A4,#4E8C84);color:#fff;box-shadow:0 8px 20px rgba(78,140,132,.24)}
+.rbtn.s{background:#fff;border:1px solid #E9E1D6;color:#6B7A76}
+
+.foot{text-align:center;color:#B0B8B4;font-size:11.5px;line-height:1.85;margin-top:26px}
+.toast{position:fixed;left:50%;bottom:40px;transform:translateX(-50%) translateY(20px);background:rgba(40,52,49,.93);
+  color:#fff;padding:11px 20px;border-radius:14px;font-size:14px;opacity:0;pointer-events:none;transition:all .28s ease;z-index:99}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(min-width:431px){.app{box-shadow:0 0 60px rgba(80,90,84,.10)}}
+
+/* ---------- 产品6 追加 ---------- */
+.sectnav{display:flex;gap:8px;margin:18px 0 0}
+.sectnav button{flex:1;border:1px solid #E9E1D6;background:#fff;border-radius:14px;padding:11px 8px;font-size:13px;font-weight:700;color:#5C6B67;cursor:pointer;font-family:inherit}
+.sectnav button:active{background:#F5F1EA}
+.disc{background:#F7F3EC;border-radius:16px;padding:13px 14px;margin-top:18px;font-size:12.5px;line-height:1.8;color:#7C8A86}
+.disc b{color:#54635F}
+.line .tx .lb{font-size:11.5px;color:#9AA7A3;font-weight:800;margin-right:6px}
+.exhead{font-size:12.5px;font-weight:800;color:#6E7D79;margin:14px 0 8px;padding-top:10px;border-top:1px dashed #E4DCD0}
+.bars{background:#fff;border-radius:20px;padding:16px 16px 18px;box-shadow:0 6px 22px rgba(74,90,84,.07);margin-top:14px}
+.bars .bt{font-size:13px;font-weight:800;color:#33403D;margin-bottom:14px}
+.barrow{margin-bottom:12px}
+.barrow .bl{display:flex;justify-content:space-between;font-size:12.5px;color:#54635F;font-weight:700;margin-bottom:6px}
+.barrow .bl span:last-child{color:#4E8C84;font-weight:800}
+.bar{height:9px;border-radius:99px;background:#EBE3D9;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#8FC7BC,#E9A178)}
+.scorebar{height:7px;border-radius:99px;background:#EBE3D9;overflow:hidden;margin:14px 0 6px}
+.scorebar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#8FC7BC,#E9A178)}
+.scoretxt{font-size:12px;color:#8C9A96;font-weight:700}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <section class="pad" id="s-home">
+    <div class="hero">
+      <div class="blob"></div>
+      <div class="eyebrow">CHAT KIT</div>
+      <h1 class="h1">微信聊天急救包</h1>
+      <p class="lead">6 个高频微信场合，27 句现成回复<br>在吗、被拉群、已读不回、改时间、借钱、催消息</p>
+      <div class="chips">
+        <span class="chip">6 个场景</span>
+        <span class="chip">27 句可复制</span>
+        <span class="chip">1 张速查表</span>
+        <span class="chip">附 4 题冷热小测</span>
+      </div>
+    </div>
+
+    <div class="tipbar">
+      <div class="ic">i</div>
+      <div class="tx">点任意一句就能复制，粘到聊天框里改两个字就能用。顶上的速查表适合临场扫一眼。</div>
+    </div>
+
+    <div class="quick">
+      <div class="qtcap"><div class="t">30 秒速查表</div><div class="b">来不及看全文时看这张</div></div>
+      <table class="qt">
+        <thead><tr><th>场景</th><th>先接住</th><th>再补这句</th><th>收尾这句</th></tr></thead>
+        <tbody>
+<tr><td class="sc">对方发「在吗」</td><td class="g v1">在的，你说</td><td class="g v2">我今天有点忙</td><td class="g v3">你说事，我听完回你</td></tr>
+<tr><td class="sc">被拉进群</td><td class="g v1">先自我介绍一句</td><td class="g v2">不一定每条都回</td><td class="g v3">需要我喊我一声</td></tr>
+<tr><td class="sc">已读不回</td><td class="g v1">不催，先给台阶</td><td class="g v2">我这边先推进着</td><td class="g v3">有空回我就行</td></tr>
+<tr><td class="sc">临时改时间</td><td class="g v1">挪得动</td><td class="g v2">你给个准点</td><td class="g v3">按新时间来</td></tr>
+<tr><td class="sc">微信上借钱</td><td class="g v1">大额不行小额可以</td><td class="g v2">金额和日期定一下</td><td class="g v3">换别的忙我能帮</td></tr>
+<tr><td class="sc">连着催回消息</td><td class="g v1">我在处理</td><td class="g v2">半小时给准话</td><td class="g v3">急事直接打电话</td></tr>
+        </tbody>
+      </table>
+      <div class="rule"></div>
+      <div class="muted">用法：先认场景，再挑一句更贴近的改两个字。同一场景三档的力度不同，按你和对方的关系远近选。</div>
+    </div>
+
+    <div class="sectnav">
+      <button onclick="goSection('s-scenes')">看 27 句话</button>
+      <button onclick="showTest()">做冷热小测</button>
+    </div>
+
+    <div class="disc"><b>使用说明</b><br>本内容是自我观察与练习工具，不构成专业心理评估、诊断或医疗建议。话术是参考句不是标准答案，请按你面对的人调整。</div>
+  </section>
+
+  <section class="pad" id="s-scenes">
+    <div class="sc-head">
+      <div class="sc-no">6</div>
+      <div class="tt"><div class="n">场景回复模板</div><div class="d">每个场景三档说法，外加对方再追问时用的追加句。</div></div>
+    </div>
+<div class="sc-head" id="sc1">
+<div class="sc-no">1</div>
+<div class="tt"><div class="n">对方发「在吗」</div><div class="d">两个字，没说要干什么，你不知道该回多长。</div></div>
+</div>
+<div class="ver" id="v1">
+<div class="vhead"><div class="nm"><span class="dot"></span>三档说法</div><button class="copyall" data-group="v1">复制整段</button></div>
+<div class="line" data-copy="在的，你说，什么事？"><div class="tx"><span class="lb">稳接</span>在的，你说，什么事？</div><div class="cp">拷</div></div>
+<div class="line" data-copy="在的，刚忙完一段，你说，我听完回你。"><div class="tx"><span class="lb">留台阶</span>在的，刚忙完一段，你说，我听完回你。</div><div class="cp">拷</div></div>
+<div class="line" data-copy="在呀，随时都在，你说。"><div class="tx"><span class="lb">轻松</span>在呀，随时都在，你说。</div><div class="cp">拷</div></div>
+<div class="exhead">对方再追问一句时</div>
+<div class="line" data-copy="刚在忙，现在空出来了。你说事就行。"><div class="tx">刚在忙，现在空出来了。你说事就行。</div><div class="cp">拷</div></div>
+<div class="line" data-copy="我在，你直接发，我这边方便回。"><div class="tx">我在，你直接发，我这边方便回。</div><div class="cp">拷</div></div>
+<div class="meta">
+<div class="r"><div class="k">什么时候用</div><div class="v">对方只丢了两个字，没有下文。多半不是聊天，是有事要找你。</div></div>
+<div class="r"><div class="k">对方可能的反应</div><div class="v">你回「在」之后他才说出真实需求；也有人只是确认你还在不在。</div></div>
+<div class="r"><div class="k">再追问一句怎么接</div><div class="v">对方回「也没啥事」，就顺着聊一句收尾，别让这句话悬在半空。</div></div>
+</div>
+</div>
+<div class="sc-head" id="sc2">
+<div class="sc-no">2</div>
+<div class="tt"><div class="n">被拉进不想待的群</div><div class="d">进了一个不熟的群，没人说话，你也不知道该不该留。</div></div>
+</div>
+<div class="ver" id="v2">
+<div class="vhead"><div class="nm"><span class="dot"></span>三档说法</div><button class="copyall" data-group="v2">复制整段</button></div>
+<div class="line" data-copy="大家好，我是 X，负责 Y 这块。后面有需要我这块的，直接找我就行。"><div class="tx"><span class="lb">稳接</span>大家好，我是 X，负责 Y 这块。后面有需要我这块的，直接找我就行。</div><div class="cp">拷</div></div>
+<div class="line" data-copy="我先看看这边的讨论，不一定每条都回，涉及 X 的部分我来接。"><div class="tx"><span class="lb">留台阶</span>我先看看这边的讨论，不一定每条都回，涉及 X 的部分我来接。</div><div class="cp">拷</div></div>
+<div class="line" data-copy="收到，我潜水为主，需要我的时候喊我一声。"><div class="tx"><span class="lb">轻松</span>收到，我潜水为主，需要我的时候喊我一声。</div><div class="cp">拷</div></div>
+<div class="exhead">对方再追问一句时</div>
+<div class="line" data-copy="先不打扰，有需要随时找我。"><div class="tx">先不打扰，有需要随时找我。</div><div class="cp">拷</div></div>
+<div class="meta">
+<div class="r"><div class="k">什么时候用</div><div class="v">刚进群需要亮相但不想立刻表态；或者群里的人和你手上的事没关系。</div></div>
+<div class="r"><div class="k">对方可能的反应</div><div class="v">「@你 你怎么看」——群主或同事通常会顺手点你名。</div></div>
+<div class="r"><div class="k">再追问一句怎么接</div><div class="v">被点名时，回一句能落地的判断加一句时间，别只回「好的」。</div></div>
+</div>
+</div>
+<div class="sc-head" id="sc3">
+<div class="sc-no">3</div>
+<div class="tt"><div class="n">已读不回怎么接</div><div class="d">你的消息被读了对面没出声，你又不想显得在催。</div></div>
+</div>
+<div class="ver" id="v3">
+<div class="vhead"><div class="nm"><span class="dot"></span>三档说法</div><button class="copyall" data-group="v3">复制整段</button></div>
+<div class="line" data-copy="看你在忙。这条要是急，我再打给你。"><div class="tx"><span class="lb">稳接</span>看你在忙。这条要是急，我再打给你。</div><div class="cp">拷</div></div>
+<div class="line" data-copy="刚才那件事你想好再回我，我不催。"><div class="tx"><span class="lb">留台阶</span>刚才那件事你想好再回我，我不催。</div><div class="cp">拷</div></div>
+<div class="line" data-copy="没回我也理解，我这边先安排着。"><div class="tx"><span class="lb">轻松</span>没回我也理解，我这边先安排着。</div><div class="cp">拷</div></div>
+<div class="exhead">对方再追问一句时</div>
+<div class="line" data-copy="刚那条不着急，你有空回我就行。"><div class="tx">刚那条不着急，你有空回我就行。</div><div class="cp">拷</div></div>
+<div class="line" data-copy="我这边先推进，回头你看完给个意见就行。"><div class="tx">我这边先推进，回头你看完给个意见就行。</div><div class="cp">拷</div></div>
+<div class="meta">
+<div class="r"><div class="k">什么时候用</div><div class="v">对方读了没回，但事情还需要一个结果；或者你不想显得在催人。</div></div>
+<div class="r"><div class="k">对方可能的反应</div><div class="v">「抱歉刚在忙」「这个我漏看了」——多数沉默是忙，不是拒绝。</div></div>
+<div class="r"><div class="k">再追问一句怎么接</div><div class="v">隔一天再追一句，带一个具体问题比带一句「在吗」更容易收到回复。</div></div>
+</div>
+</div>
+<div class="sc-head" id="sc4">
+<div class="sc-no">4</div>
+<div class="tt"><div class="n">临时改时间</div><div class="d">约好的时间对方临时改了，还是那种「刚收到消息」的口气。</div></div>
+</div>
+<div class="ver" id="v4">
+<div class="vhead"><div class="nm"><span class="dot"></span>三档说法</div><button class="copyall" data-group="v4">复制整段</button></div>
+<div class="line" data-copy="时间我这边挪得动，改到 X 点我这边没问题。"><div class="tx"><span class="lb">稳接</span>时间我这边挪得动，改到 X 点我这边没问题。</div><div class="cp">拷</div></div>
+<div class="line" data-copy="改时间没问题，我把手上那件事往后挪半小时，你定个准点。"><div class="tx"><span class="lb">留台阶</span>改时间没问题，我把手上那件事往后挪半小时，你定个准点。</div><div class="cp">拷</div></div>
+<div class="line" data-copy="行，那我把后半段留给新的时间点。"><div class="tx"><span class="lb">轻松</span>行，那我把后半段留给新的时间点。</div><div class="cp">拷</div></div>
+<div class="exhead">对方再追问一句时</div>
+<div class="line" data-copy="按新时间来就行，我这边赶得上。"><div class="tx">按新时间来就行，我这边赶得上。</div><div class="cp">拷</div></div>
+<div class="meta">
+<div class="r"><div class="k">什么时候用</div><div class="v">对方改时间，你手上有别的事，但不想显得难相处。</div></div>
+<div class="r"><div class="k">对方可能的反应</div><div class="v">「那我尽量赶到」——有的改期是真的有变动。</div></div>
+<div class="r"><div class="k">再追问一句怎么接</div><div class="v">让对方给一个准点：几点几分、线上还是当面。改期怕的是没有准点。</div></div>
+</div>
+</div>
+<div class="sc-head" id="sc5">
+<div class="sc-no">5</div>
+<div class="tt"><div class="n">微信上借钱</div><div class="d">开口就是借钱，金额没说清，还的时间也没说。</div></div>
+</div>
+<div class="ver" id="v5">
+<div class="vhead"><div class="nm"><span class="dot"></span>三档说法</div><button class="copyall" data-group="v5">复制整段</button></div>
+<div class="line" data-copy="我这边现在拿不出来，真有急事我再想想办法。"><div class="tx"><span class="lb">稳接</span>我这边现在拿不出来，真有急事我再想想办法。</div><div class="cp">拷</div></div>
+<div class="line" data-copy="大额我给不了，小额可以。你就按小额来算，咱俩都别为难。"><div class="tx"><span class="lb">留台阶</span>大额我给不了，小额可以。你就按小额来算，咱俩都别为难。</div><div class="cp">拷</div></div>
+<div class="line" data-copy="我这边刚好手紧，你要不问问别人？"><div class="tx"><span class="lb">轻松</span>我这边刚好手紧，你要不问问别人？</div><div class="cp">拷</div></div>
+<div class="exhead">对方再追问一句时</div>
+<div class="line" data-copy="这次确实不行，换别的忙我能帮。"><div class="tx">这次确实不行，换别的忙我能帮。</div><div class="cp">拷</div></div>
+<div class="line" data-copy="我这边周转不开，等我缓过来再说。"><div class="tx">我这边周转不开，等我缓过来再说。</div><div class="cp">拷</div></div>
+<div class="meta">
+<div class="r"><div class="k">什么时候用</div><div class="v">金额超出手头承受范围；或者对方开口时没给归还的时间。</div></div>
+<div class="r"><div class="k">对方可能的反应</div><div class="v">「就这一次」「下周就还你」——先谈感情还是先谈数字，决定后面的难易。</div></div>
+<div class="r"><div class="k">再追问一句怎么接</div><div class="v">决定要借，就把金额、日期、方式三件事定下来，写在聊天里比记在心里管用。</div></div>
+</div>
+</div>
+<div class="sc-head" id="sc6">
+<div class="sc-no">6</div>
+<div class="tt"><div class="n">连着催你回消息</div><div class="d">对方连发了几条，你还没回，手上又确实在忙。</div></div>
+</div>
+<div class="ver" id="v6">
+<div class="vhead"><div class="nm"><span class="dot"></span>三档说法</div><button class="copyall" data-group="v6">复制整段</button></div>
+<div class="line" data-copy="我在处理手上的事，半小时后给你准话。"><div class="tx"><span class="lb">稳接</span>我在处理手上的事，半小时后给你准话。</div><div class="cp">拷</div></div>
+<div class="line" data-copy="消息我看到了，在排队。今天晚点我一条条回你。"><div class="tx"><span class="lb">留台阶</span>消息我看到了，在排队。今天晚点我一条条回你。</div><div class="cp">拷</div></div>
+<div class="line" data-copy="急事直接打电话，微信我有时候会漏看。"><div class="tx"><span class="lb">轻松</span>急事直接打电话，微信我有时候会漏看。</div><div class="cp">拷</div></div>
+<div class="exhead">对方再追问一句时</div>
+<div class="line" data-copy="先回你这一条，其他的排队中。"><div class="tx">先回你这一条，其他的排队中。</div><div class="cp">拷</div></div>
+<div class="meta">
+<div class="r"><div class="k">什么时候用</div><div class="v">对方连发几条、你确实在忙；或者你觉得再不回会更难回。</div></div>
+<div class="r"><div class="k">对方可能的反应</div><div class="v">「你还在吗」——多数人连发，是因为上一条没等到回应。</div></div>
+<div class="r"><div class="k">再追问一句怎么接</div><div class="v">先回一条带时间点的话，再补一个具体内容，别让等待没有落点。</div></div>
+</div>
+</div>
+    <div class="disc"><b>使用说明</b><br>本内容是自我观察与练习工具，不构成专业心理评估、诊断或医疗建议。</div>
+  </section>
+
+  <section class="pad" id="s-test">
+    <div class="sc-head">
+      <div class="sc-no">测</div>
+      <div class="tt"><div class="n">你回消息偏冷还是偏热</div><div class="d">4 道题，看你的消息是偏短、偏热，还是温度合适。</div></div>
+    </div>
+    <div class="qwrap" id="qwrap"></div>
+    <div class="disc"><b>使用说明</b><br>本内容是自我观察与练习工具，不构成专业心理评估、诊断或医疗建议。结果只反映你这次的选择。</div>
+  </section>
+
+  <div class="foot">
+    微信聊天急救包 · 6 个场景 27 句现成回复<br>
+    单文件网页，手机打开即用，断网也能看
+  </div>
+
+</div>
+<div class="toast" id="toast"></div>
+<script>
+var QZ = [["对方只发来一句「在吗」，你一般怎么回？",[["在的，你说。",[0,0,1]],["在的，刚忙完一段，你说，我听完回你。",[1,2,2]],["在呀，正好想问你个事，这阵子怎么样？",[2,2,2]]]],["你有事要问对方，开头一般怎么写？",[["直接把问题甩过去，不加铺垫",[0,1,1]],["有个事想请教你，大概五分钟的事",[1,2,2]],["方便的话想跟你聊两句，不急",[2,2,2]]]],["对方连发三条催你，你回的是？",[["先不回，等手上的事做完再说",[0,0,0]],["在处理，半小时后回你",[1,2,1]],["刚在开会，这几条我按顺序回你",[2,2,2]]]],["朋友发来一段抱怨，你通常回什么？",[["「嗯嗯」「哦哦」",[0,0,1]],["听着挺难受的，后来呢？",[2,2,2]],["我懂，别放心上",[1,1,1]]]]];
+var RES = [["偏冷型","你的回复不算没礼貌，但常常只有两个字。对方读完不知道你是忙、是没看到，还是不想接，冷是这么来的。",2,[[["把「在的」升级成带信息的句子","多给半句对方用得上的信息，比如「刚忙完一段，你说，我听完回你」。"],["一条消息里带一个具体东西","时间、进展、或者一句和对方有关的问话，任选一个，别让消息空着。"],["催你的场合先给时间点","「半小时后回你」比不回更能稳住对方。"],["别用一串「嗯嗯」结束对话","对方讲的是他的事，补一句问句比点头更接得住。"]]],"今天挑三条要回的消息，每条都补一句和对方有关的具体话，回完记下来。","#5B7FA6"],["温度合适型","你回消息的长度、语气和分寸都对得上。多数场合这已经够用，缺的是偶尔先开口的那一下。",5,[[["把回复变成一次小推进","回完对方的句子，顺手补一句「我这边先去弄，回头同步你」。"],["重要的事加一个时间点","对方等的不是句子，是知道什么时候有下文。"],["群里的沉默由你来收尾","没人接话时，你补一句总结或问题，气氛就回来了。"],["把「不方便说」说完整","「现在不方便」后面补一句什么时候方便，对方就不用猜。"]]],"今天有三次对话是你先开的头，记下你说了什么，下次照抄自己的话。","#4E8C84"],["偏热型","你的消息热情、周到、句子偏长。对方接得住的时候很舒服，忙的时候会觉得有压力。",8,[[["长回复先给结论","把要对方回话的那一句放在开头，后面的话让他自己往下翻。"],["少用几个感叹号","同样的意思，语气收一点，对方更好接。"],["别抢着替对方回","对方还没说完就接话，容易把你的判断塞进对方嘴里。"],["给主动留点余地","你想帮忙的时候加一句「需要我帮忙吗」，比直接上手更让人舒服。"]]],"今天回看三条你发的长消息，把开头那句结论单独摘出来，看能不能说得更短。","#B46B3C"]];
+var DIMS = [["warm","冷热"],["len","信息量"],["init","主动性"]];
+var qi = 0, picks = [];
+
+function toast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('on');clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove('on');},1500);}
+function copyText(txt){
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(function(){toast('已复制，去聊天框里粘上');},function(){fallback(txt);});
+  } else { fallback(txt); }
+}
+function fallback(txt){
+  var ta=document.createElement('textarea');ta.value=txt;ta.style.position='fixed';ta.style.opacity='0';
+  document.body.appendChild(ta);ta.select();
+  try{document.execCommand('copy');toast('已复制，去聊天框里粘上');}catch(e){toast('长按选中这段文字也可以复制');}
+  document.body.removeChild(ta);
+}
+document.addEventListener('click',function(e){
+  var line=e.target.closest('[data-copy]');
+  if(line){copyText(line.getAttribute('data-copy'));return;}
+  var grp=e.target.closest('[data-group]');
+  if(grp){
+    var id=grp.getAttribute('data-group');
+    var box=document.getElementById(id);
+    var lines=box?box.querySelectorAll('[data-copy]'):[];
+    var arr=[];for(var i=0;i<lines.length;i++){arr.push(lines[i].getAttribute('data-copy'));}
+    copyText(arr.join('\n'));return;
+  }
+  var opt=e.target.closest('.opt');
+  if(opt){pick(parseInt(opt.getAttribute('data-i'),10));return;}
+});
+
+function goSection(id){
+  var el=document.getElementById(id);
+  if(el){window.scrollTo(0,el.offsetTop-8);}
+}
+function showTest(){qi=0;picks=[];renderQ();goSection('s-test');}
+function renderQ(){
+  var wrap=document.getElementById('qwrap');
+  if(qi>=QZ.length){renderResult();return;}
+  var q=QZ[qi];
+  var h='<div class="qcnt">第 <b>'+(qi+1)+'</b> / '+QZ.length+' 题</div>';
+  h+='<div class="qbar"><i style="width:'+Math.round((qi+1)/QZ.length*100)+'%"></i></div>';
+  h+='<div class="qtext">'+q[0]+'</div><div class="opts">';
+  for(var i=0;i<q[1].length;i++){
+    h+='<button class="opt" data-i="'+i+'"><span class="k">'+'ABC'[i]+'</span><span>'+q[1][i][0]+'</span></button>';
+  }
+  h+='</div><button class="backbtn" onclick="goSection(\'s-scenes\')">先返回上面看看话术</button>';
+  wrap.innerHTML=h;
+}
+function pick(i){
+  var q=QZ[qi];
+  if(!q) return;
+  picks.push(q[1][i][1]);
+  qi++;
+  renderQ();
+}
+function renderResult(){
+  var w=0,l=0,it=0;
+  for(var i=0;i<picks.length;i++){w+=picks[i][0];l+=picks[i][1];it+=picks[i][2];}
+  var total=w+l+it;
+  var band=RES[2];
+  for(var j=0;j<RES.length;j++){ if(total<=RES[j][2]) { band=RES[j]; break; } }
+  var mx=QZ.length*2;
+  var h='<div class="res-hero" style="background:linear-gradient(135deg,'+band[5]+'22,'+band[5]+'0A)">';
+  h+='<div class="kicker" style="color:'+band[5]+'">回消息冷热 · 测试结果</div>';
+  h+='<div class="tname" style="color:'+band[5]+'">'+band[0]+'</div>';
+  h+='<div class="oneline" style="color:#4B5C58">'+band[1]+'</div>';
+  h+='</div>';
+  h+='<div class="bars"><div class="bt">三项得分（每项满分 '+mx+'）</div>';
+  var vals=[w,l,it];
+  for(var k=0;k<DIMS.length;k++){
+    var pct=Math.round(vals[k]/mx*100);
+    h+='<div class="barrow"><div class="bl"><span>'+DIMS[k][1]+'</span><span>'+vals[k]+' / '+mx+'</span></div>';
+    h+='<div class="bar"><i style="width:'+pct+'%"></i></div></div>';
+  }
+  h+='<div class="scoretxt">总分 '+total+' / '+(mx*3)+' 分</div>';
+  h+='<div class="scorebar"><i style="width:'+Math.round(total/(mx*3)*100)+'%"></i></div>';
+  h+='</div>';
+  h+='<div class="res-list">';
+  for(var t=0;t<band[3][0].length;t++){
+    h+='<div class="res-item"><div class="ic" style="background:'+band[5]+'">'+(t+1)+'</div><div class="tx"><b>'+band[3][0][t][0]+'</b>'+band[3][0][t][1]+'</div></div>';
+  }
+  h+='</div>';
+  h+='<div class="disc"><b>今天能完成的小练习</b><br>'+band[4]+'</div>';
+  h+='<button class="rbtn p" onclick="showTest()">再测一次</button>';
+  h+='<button class="rbtn s" onclick="goSection(\'s-home\')">回到首页</button>';
+  document.getElementById('qwrap').innerHTML=h;
+}
+</script>
+</body>
+</html>
